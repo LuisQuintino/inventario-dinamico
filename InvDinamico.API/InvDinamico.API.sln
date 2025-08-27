@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvDinamico.API", "InvDinamico.API\InvDinamico.API.csproj", "{0E78BC00-AF92-4ABE-84BF-80D2C298097D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvDinamico.Domain", "InvDinamico.Domain\InvDinamico.Domain.csproj", "{BE85D708-F349-4418-8A60-D3AE455BC8A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E78BC00-AF92-4ABE-84BF-80D2C298097D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E78BC00-AF92-4ABE-84BF-80D2C298097D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E78BC00-AF92-4ABE-84BF-80D2C298097D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E78BC00-AF92-4ABE-84BF-80D2C298097D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE85D708-F349-4418-8A60-D3AE455BC8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE85D708-F349-4418-8A60-D3AE455BC8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE85D708-F349-4418-8A60-D3AE455BC8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE85D708-F349-4418-8A60-D3AE455BC8A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F114045C-79E6-464B-AD87-294CAEABA306}
+	EndGlobalSection
+EndGlobal
