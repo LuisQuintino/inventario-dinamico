@@ -1,0 +1,10 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/InvDinamico.API/InvDinamico.API/obj
+/InvDinamico.API/InvDinamico.API/bin/Debug/net8.0
+/InvDinamico.API/InvDinamico.Domain/bin/Debug/net8.0
+/InvDinamico.API/InvDinamico.Domain/obj
+/InvDinamico.API/.vs
+/.vs
