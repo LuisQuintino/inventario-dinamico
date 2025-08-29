@@ -17,7 +17,9 @@ namespace InvDinamico.Domain.Entidades
         public DateTime DtInclusao { get; set; }
         public DateTime DtSituacao { get; set; }
         public SituacaoOperador Situacao { get; set; }
-        public TipoOperador TipoOperador { get; set; }  
+        public TipoOperador TipoOperador { get; set; }
+
+        public override bool Auditavel { get; set; } = true;
 
         public Operador() { }
 

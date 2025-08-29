@@ -6,5 +6,7 @@
         Entidades.Operador Atualizar(Entidades.Operador operadorEntity);
         void Remover(Entidades.Operador operadorEntity);
         Entidades.Operador? Obter(Guid codigo);
+        Entidades.Operador? Obter(string email);
+        IEnumerable<Entidades.Operador> ObterTodos();
     }
 }

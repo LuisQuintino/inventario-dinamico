@@ -12,5 +12,11 @@ namespace InvDinamico.Domain.Repositories.Operador
         public Entidades.Operador? Obter(Guid codigo) => GetById(codigo);
 
         public void Remover(Entidades.Operador operadorEntity) => Delete(operadorEntity);
+
+        public Entidades.Operador? Obter(string email)
+            => Context.Where((op) => op.Email == email)?.SingleOrDefault();
+
+        public IEnumerable<Entidades.Operador> ObterTodos()
+            => Context.ToList();
     }
 }

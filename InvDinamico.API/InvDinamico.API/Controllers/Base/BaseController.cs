@@ -1,18 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InvDinamico.API.Controllers.Base
 {
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class BaseController : ControllerBase
     {
-        protected int ObterCodigoOperador()
+        protected Guid ObterCodigoOperador()
         {
             var codigoUsuario = HttpContext.User.Claims
-                .FirstOrDefault(x => x.Type == "CodigoOperador")?.Value;
+                .SingleOrDefault(x => x.Type == "CodigoOperador")?.Value;
 
-            if (string.IsNullOrEmpty(codigoUsuario))
+            if (string.IsNullOrWhiteSpace(codigoUsuario))
                 throw new Exception("Código do Operador não encontrado.");
 
-            return int.Parse(codigoUsuario);
+            return Guid.Parse(codigoUsuario);
         }
     }
 }

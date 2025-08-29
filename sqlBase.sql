@@ -45,5 +45,6 @@ CREATE TABLE AuditTrail (
     JsonAntigo VARCHAR(65535),
     JsonNovo VARCHAR(65535),
     NomeEntidade VARCHAR(100),
-    DtAlteracao DATETIME NOT NULL
+    DtAlteracao DATETIME NOT NULL,
+    CodigoOperador CHAR(36) NOT NULL
 );

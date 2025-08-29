@@ -10,7 +10,6 @@ namespace api_domain.Extensions
             {
                 new(ClaimTypes.Email, operador.Email),
                 new("CodigoOperador", operador.Codigo.ToString())
-
             };
     }
 }
