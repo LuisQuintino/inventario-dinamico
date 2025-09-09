@@ -1,7 +1,11 @@
 using api_domain.Config;
 using api_domain.Extensions;
+using InvDinamico.Domain.Repositories.Categoria;
+using InvDinamico.Domain.Repositories.Estoque;
+using InvDinamico.Domain.Repositories.Movimento;
 using InvDinamico.Domain.Repositories.Operador;
 using InvDinamico.Domain.Services.Autenticacao;
+using InvDinamico.Domain.Services.Movimento;
 using InvDinamico.Domain.Services.Operador;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,6 +25,10 @@ builder.Services.AddDbContext<BdContext>();
 builder.Services.AddScoped<IOperadorRepository, OperadorRepository>();
 builder.Services.AddScoped<IOperadorService, OperadorService>();
 builder.Services.AddScoped<IAutenticacaoService, AutenticacaoService>();
+builder.Services.AddScoped<IMovimentoService, MovimentoService>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IMovimentoRepository, MovimentoRepository>();
+builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
 
 var key = Encoding.ASCII.GetBytes(JwtExtensions.JwtSecretKey);
 services.AddAuthentication(x =>
