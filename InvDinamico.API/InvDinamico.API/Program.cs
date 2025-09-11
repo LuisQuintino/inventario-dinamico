@@ -5,6 +5,8 @@ using InvDinamico.Domain.Repositories.Estoque;
 using InvDinamico.Domain.Repositories.Movimento;
 using InvDinamico.Domain.Repositories.Operador;
 using InvDinamico.Domain.Services.Autenticacao;
+using InvDinamico.Domain.Services.Categoria;
+using InvDinamico.Domain.Services.Estoque;
 using InvDinamico.Domain.Services.Movimento;
 using InvDinamico.Domain.Services.Operador;
 using Microsoft.AspNetCore.Authentication;
@@ -29,6 +31,8 @@ builder.Services.AddScoped<IMovimentoService, MovimentoService>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IMovimentoRepository, MovimentoRepository>();
 builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
+builder.Services.AddScoped<IEstoqueService, EstoqueService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 var key = Encoding.ASCII.GetBytes(JwtExtensions.JwtSecretKey);
 services.AddAuthentication(x =>
