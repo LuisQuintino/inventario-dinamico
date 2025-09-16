@@ -2,5 +2,6 @@
 {
     public interface IEstoqueRepository
     {
+        void Inserir(Entidades.Estoque entidades);
     }
 }

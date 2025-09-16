@@ -1,5 +1,6 @@
 ﻿using InvDinamico.Domain.Entidades.Base;
 using InvDinamico.Domain.Entidades.Enums;
+using InvDinamico.Domain.Messaging.Categoria;
 
 namespace InvDinamico.Domain.Entidades
 {
@@ -11,5 +12,17 @@ namespace InvDinamico.Domain.Entidades
         public DateTime DtUltimaAtualizacao { get; set; }
         public SituacaoGenerica Situacao { get; set; }
         public override bool Auditavel { get; set; } = true;
+
+        public Categoria()
+        {
+        }
+
+        public Categoria(string nome)
+        {
+            Nome = nome;
+            DtInclusao = DateTime.Now;
+            DtUltimaAtualizacao = DateTime.Now;
+            Situacao = SituacaoGenerica.Habilitado;
+        }
     }
 }

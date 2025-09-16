@@ -1,4 +1,5 @@
 ﻿using InvDinamico.Domain.Entidades.Base;
+using InvDinamico.Domain.Messaging.Base;
 
 namespace InvDinamico.Domain.Entidades
 {
@@ -13,5 +14,17 @@ namespace InvDinamico.Domain.Entidades
         public Guid CodigoOperador { get; set; }
 
         public override bool Auditavel { get; set; }
+
+        public Movimento() {}
+
+        public Movimento(Estoque estoque, Guid codigoOperador, int qtdMovimentada, string motivoMovimento)
+        {
+            CodigoEstoque = estoque.Codigo ?? throw new InvDinamicoException("Necessário informar estoque");
+            CodigoOperador = codigoOperador;
+            Motivo = motivoMovimento;
+            Diferenca = qtdMovimentada;
+            QtdEstoqueAntes = estoque.QtdEmEstoque;
+            QtdEstoqueDepois = estoque.QtdEmEstoque + (qtdMovimentada);
+        }
     }
 }

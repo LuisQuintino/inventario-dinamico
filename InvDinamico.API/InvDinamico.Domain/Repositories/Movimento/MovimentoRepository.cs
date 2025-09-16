@@ -5,5 +5,6 @@ namespace InvDinamico.Domain.Repositories.Movimento
 {
     public class MovimentoRepository(BdContext context) : RepositoryBase<Entidades.Movimento>(context), IMovimentoRepository
     {
+        public void Inserir(Entidades.Movimento movimento) => Insert(movimento);
     }
 }
