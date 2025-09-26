@@ -11,8 +11,7 @@ namespace InvDinamico.API.Controllers
     {
         public readonly IEstoqueService _estoqueService;
 
-        public EstoqueController(IEstoqueService estoqueService)
-        {
+        public EstoqueController(IEstoqueService estoqueService){
             _estoqueService = estoqueService;
         }
 
