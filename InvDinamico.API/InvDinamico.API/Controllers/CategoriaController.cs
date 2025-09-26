@@ -5,86 +5,69 @@ using InvDinamico.Domain.Services.Categoria;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace InvDinamico.API.Controllers
-{
-    public class CategoriaController : BaseController
-    {
+namespace InvDinamico.API.Controllers{
+    public class CategoriaController : BaseController{
+        
         private readonly ICategoriaService _categoriaService;
 
-        public CategoriaController(ICategoriaService categoriaService)
-        {
+        public CategoriaController(ICategoriaService categoriaService){
             _categoriaService = categoriaService;
         }
 
         [HttpPost]
-        public ActionResult Inserir(InserirCategoriaRequest inserirCategoria)
-        {
-            try
-            {
+        public ActionResult Inserir(InserirCategoriaRequest inserirCategoria){
+            try{
                 _categoriaService.Inserir(inserirCategoria);
 
-                return Ok(new ResponseBase
-                {
+                return Ok(new ResponseBase{
                     Sucesso = true
                 });
             }
-            catch (InvDinamicoException invEx)
-            {
-                return BadRequest(new ResponseBase
-                {
+            catch (InvDinamicoException invEx){
+                return BadRequest(new ResponseBase{
                     Sucesso = false,
                     MsgErro = invEx.Message
                 });
             }
-            catch (Exception)
-            {
+            catch (Exception){
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpPut]
-        public ActionResult Atualizar(AtualizarCategoriaRequest atualizarCategoria)
-        {
-            try
-            {
+        public ActionResult Atualizar(AtualizarCategoriaRequest atualizarCategoria){
+            try{
                 _categoriaService.Atualizar(atualizarCategoria);
 
-                return Ok(new ResponseBase
-                {
+                return Ok(new ResponseBase{
                     Sucesso = true
                 });
             }
-            catch (InvDinamicoException invEx)
-            {
+            catch (InvDinamicoException invEx){
                 return BadRequest(new ResponseBase
                 {
                     Sucesso = false,
                     MsgErro = invEx.Message
                 });
             }
-            catch (Exception)
-            {
+            catch (Exception){
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpGet]
-        public ActionResult ListarCategorias(AtualizarCategoriaRequest atualizarCategoria)
-        {
-            try
-            {
+        public ActionResult ListarCategorias(AtualizarCategoriaRequest atualizarCategoria){
+            try{
                 return Ok(_categoriaService.ListarCategorias());
             }
-            catch (InvDinamicoException invEx)
-            {
+            catch (InvDinamicoException invEx){
                 return BadRequest(new ResponseBase
                 {
                     Sucesso = false,
                     MsgErro = invEx.Message
                 });
             }
-            catch (Exception)
-            {
+            catch (Exception){
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
