@@ -13,8 +13,7 @@ namespace InvDinamico.API.Controllers
         private readonly IOperadorService _operadorService = operadorService;
 
         [HttpPost]
-        public ActionResult CadastrarOperador(CadastrarOperadorRequest cadastrarOperadorRequest)
-        {
+        public ActionResult CadastrarOperador(CadastrarOperadorRequest cadastrarOperadorRequest){
             try
             {
                 _operadorService.CadastrarOperador(cadastrarOperadorRequest);
