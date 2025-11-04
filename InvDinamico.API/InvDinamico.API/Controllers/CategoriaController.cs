@@ -56,8 +56,9 @@ namespace InvDinamico.API.Controllers{
         }
 
         [HttpGet]
-        public ActionResult ListarCategorias(AtualizarCategoriaRequest atualizarCategoria){
-            try{
+        public ActionResult ListarCategorias(){
+            try
+            {
                 return Ok(_categoriaService.ListarCategorias());
             }
             catch (InvDinamicoException invEx){

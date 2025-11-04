@@ -39,5 +39,27 @@ namespace InvDinamico.API.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
+
+        [HttpGet]
+        public ActionResult ListarEstoques()
+        {
+            try
+            {
+                var estoquesLista = _estoqueService.ListarEstoques();
+                return Ok(estoquesLista);
+            }
+            catch (InvDinamicoException invEx)
+            {
+                return BadRequest(new ResponseBase
+                {
+                    Sucesso = false,
+                    MsgErro = invEx.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
     }
 }

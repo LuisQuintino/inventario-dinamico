@@ -20,7 +20,7 @@ namespace api_domain.Extensions
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(1),
+                Expires = DateTime.UtcNow.AddMinutes(5),
                 SigningCredentials =
                 new SigningCredentials(
                     new SymmetricSecurityKey(key),

@@ -16,5 +16,8 @@ namespace api_domain.Config
 
         public DbSet<Operador> Operadores { get; set; }
         public DbSet<AuditTrail> AuditTrail { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Estoque> Estoques { get; set; }
+        public DbSet<Movimento> Movimentos { get; set; }
     }
 }

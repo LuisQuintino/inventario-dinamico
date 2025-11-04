@@ -3,5 +3,6 @@
     public interface IEstoqueRepository
     {
         void Inserir(Entidades.Estoque entidades);
+        List<Entidades.Estoque> ListarEstoques();
     }
 }

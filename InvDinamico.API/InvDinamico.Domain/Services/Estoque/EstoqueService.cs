@@ -3,7 +3,6 @@ using InvDinamico.Domain.Messaging.Estoque;
 using InvDinamico.Domain.Repositories.Categoria;
 using InvDinamico.Domain.Repositories.Estoque;
 using InvDinamico.Domain.Repositories.Movimento;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace InvDinamico.Domain.Services.Estoque
 {
@@ -33,7 +32,10 @@ namespace InvDinamico.Domain.Services.Estoque
             };
 
             estoqueRepository.Inserir(estoque);
-            movimentoRepository.Inserir(new(estoque, codigoOperador, estoque.QtdEmEstoque, "Inserção de item ao estoque"));
+            movimentoRepository.Inserir(new(estoque, codigoOperador, estoque.QtdEmEstoque, "Inserção de item ao estoque", novoEstoque: true));
         }
+
+        public List<Entidades.Estoque> ListarEstoques()
+            => estoqueRepository.ListarEstoques();
     }
 }

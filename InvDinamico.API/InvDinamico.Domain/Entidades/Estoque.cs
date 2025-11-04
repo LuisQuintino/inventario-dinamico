@@ -1,9 +1,13 @@
 ﻿using InvDinamico.Domain.Entidades.Base;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InvDinamico.Domain.Entidades
 {
+    [Table("Estoque")]
     public class Estoque : EntityBase
     {
+        [Key]
         public override Guid? Codigo { get; set; }
         public string Nome { get; set; }
         public Guid CodigoCategoria { get; set; }

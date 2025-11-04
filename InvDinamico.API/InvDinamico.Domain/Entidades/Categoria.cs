@@ -1,11 +1,14 @@
 ﻿using InvDinamico.Domain.Entidades.Base;
 using InvDinamico.Domain.Entidades.Enums;
-using InvDinamico.Domain.Messaging.Categoria;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InvDinamico.Domain.Entidades
 {
+    [Table("Categoria")]
     public class Categoria : EntityBase
     {
+        [Key]
         public override Guid? Codigo { get; set; }
         public string Nome { get; set; }
         public DateTime DtInclusao { get; set; }
