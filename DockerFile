@@ -1,0 +1,48 @@
+# syntax=docker/dockerfile:1
+
+# Stage 1: Build
+# We use the .NET 8.0 SDK image, which contains all the tools needed to build your application.
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy only the project file first. This step is cached by Docker.
+# As long as your .csproj file doesn't change, 'dotnet restore' won't run again, speeding up builds.
+# IMPORTANT: This path MUST match your project file's location.
+COPY ["InvDinamico.API/InvDinamico.API/InvDinamico.API.csproj", "InvDinamico.API/InvDinamico.API/"]
+
+# If you have other projects in your solution (e.g., class libraries), copy their .csproj files too:
+# COPY ["InvDinamico.Core/InvDinamico.Core.csproj", "InvDinamico.Core/"]
+#
+# If you have a solution (.sln) file at the root, you might copy it first:
+# COPY ["MySolution.sln", "."]
+
+# Restore NuGet packages for the specific project
+RUN dotnet restore "InvDinamico.API/InvDinamico.API/InvDinamico.API.csproj"
+
+# Copy the rest of your application's source code
+COPY . .
+
+# Publish the application, compiling it into a 'publish' folder.
+# We run publish from the project's specific directory.
+WORKDIR "/src/InvDinamico.API/InvDinamico.API"
+RUN dotnet publish "InvDinamico.API.csproj" -c Release -o /app/publish
+
+# ---
+
+# Stage 2: Final Image
+# We use the much smaller ASP.NET runtime image, which is all that's needed to RUN the app.
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+
+# Copy the published application from the 'build' stage into the final image
+COPY --from=build /app/publish .
+
+# ASP.NET Core applications in containers typically run on port 8080.
+EXPOSE 8080
+
+# Set the environment variable to ensure the app listens on the correct port
+ENV ASPNETCORE_URLS=http://+:8080
+
+# The entry point to run your application.
+# Replace 'InvDinamico.API.dll' if your project's output DLL has a different name.
+ENTRYPOINT ["dotnet", "InvDinamico.API.dll"]
