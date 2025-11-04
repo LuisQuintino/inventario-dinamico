@@ -9,7 +9,7 @@ namespace api_domain.Config
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connStr = "Database=invdinamico;Port=3306;Data Source=127.0.0.1;User Id=root;SslMode=none;";
+                var connStr = "Server=hopper.proxy.rlwy.net;Port=30420;Database=invdinamico;Uid=root;Pwd=yGsRLEqZFwnwtrGWnySEXusfexCKNxHO;AllowPublicKeyRetrieval=true;";
                 optionsBuilder.UseMySQL(connStr);
             }
         }

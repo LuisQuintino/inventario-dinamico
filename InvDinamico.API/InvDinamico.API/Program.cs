@@ -81,7 +81,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "CORS",
                       builder =>
                       {
-                          builder.WithOrigins("http://localhost:3000")
+                          builder.WithOrigins("http://localhost:3000", "https://inventario-dinamico.vercel.app")
                                  .AllowAnyHeader()
                                  .AllowAnyMethod();
                       });
