@@ -5,21 +5,18 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy all .csproj files first for efficient caching.
-# --- PATHS CORRECTED HERE ---
-COPY ["InvDinamicoAPI/InvDinamico.API.csproj", "InvDinamicoAPI/"]
+# These paths match your screenshot.
+COPY ["InvDinamico.API/InvDinamico.API.csproj", "InvDinamico.API/"]
 COPY ["InvDinamico.Domain/InvDinamico.Domain.csproj", "InvDinamico.Domain/"]
 
-# Restore NuGet packages for the main API project.
-# This will also restore dependencies for the referenced Domain project.
-# --- PATH CORRECTED HERE ---
-RUN dotnet restore "InvDinamicoAPI/InvDinamico.API.csproj"
+# Restore NuGet packages
+RUN dotnet restore "InvDinamico.API/InvDinamico.API.csproj"
 
-# Copy all the source code for both projects
+# Copy all the source code
 COPY . .
 
 # Publish the application
-# --- WORKDIR CORRECTED HERE ---
-WORKDIR "/src/InvDinamicoAPI"
+WORKDIR "/src/InvDinamico.API"
 RUN dotnet publish "InvDinamico.API.csproj" -c Release -o /app/publish
 
 # ---
@@ -27,13 +24,7 @@ RUN dotnet publish "InvDinamico.API.csproj" -c Release -o /app/publish
 # Stage 2: Final Image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
-
-# Copy the published application from the 'build' stage
 COPY --from=build /app/publish .
-
-# Expose port 8080 and set the URL
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
-
-# Entry point to run the application
 ENTRYPOINT ["dotnet", "InvDinamico.API.dll"]
