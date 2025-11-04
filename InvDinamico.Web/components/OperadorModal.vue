@@ -50,8 +50,7 @@ function handleSubmit() {
           <div>
             <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
             <input 
-              v-model="formData.email" 
-              type="email" 
+              v-model="formData.email"
               id="email" 
               required 
               class="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"

@@ -28,13 +28,22 @@ function handleLogout() {
               <span class="ml-2">Dashboard</span>
             </NuxtLink>
           </li>
-          <li class="mt-2">
+          <li class="mt-2" v-if="authStore.isAdmin" >
             <NuxtLink 
               to="/operadores" 
               class="flex items-center py-2 px-3 rounded text-gray-300 hover:bg-gray-700 hover:text-white"
               active-class="bg-gray-700 text-white"
             >
               <span class="ml-2">Operadores</span>
+            </NuxtLink>
+          </li>
+          <li class="mt-2">
+            <NuxtLink 
+              to="/categorias" 
+              class="flex items-center py-2 px-3 rounded text-gray-300 hover:bg-gray-700 hover:text-white"
+              active-class="bg-gray-700 text-white"
+            >
+              <span class="ml-2">Categorias</span>
             </NuxtLink>
           </li>
         </ul>
