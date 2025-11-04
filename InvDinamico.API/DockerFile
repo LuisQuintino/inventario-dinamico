@@ -5,19 +5,21 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy all .csproj files first for efficient caching.
-# These paths are relative to the Dockerfile's location (the solution root).
-COPY ["InvDinamico.API/InvDinamico.API.csproj", "InvDinamico.API/"]
+# --- PATHS CORRECTED HERE ---
+COPY ["InvDinamicoAPI/InvDinamico.API.csproj", "InvDinamicoAPI/"]
 COPY ["InvDinamico.Domain/InvDinamico.Domain.csproj", "InvDinamico.Domain/"]
 
 # Restore NuGet packages for the main API project.
 # This will also restore dependencies for the referenced Domain project.
-RUN dotnet restore "InvDinamico.API/InvDinamico.API.csproj"
+# --- PATH CORRECTED HERE ---
+RUN dotnet restore "InvDinamicoAPI/InvDinamico.API.csproj"
 
 # Copy all the source code for both projects
 COPY . .
 
 # Publish the application
-WORKDIR "/src/InvDinamico.API"
+# --- WORKDIR CORRECTED HERE ---
+WORKDIR "/src/InvDinamicoAPI"
 RUN dotnet publish "InvDinamico.API.csproj" -c Release -o /app/publish
 
 # ---
