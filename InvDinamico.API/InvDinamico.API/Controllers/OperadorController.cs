@@ -3,6 +3,7 @@ using InvDinamico.Domain.Entidades;
 using InvDinamico.Domain.Messaging.Base;
 using InvDinamico.Domain.Messaging.Operador;
 using InvDinamico.Domain.Services.Operador;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -13,6 +14,7 @@ namespace InvDinamico.API.Controllers
         private readonly IOperadorService _operadorService = operadorService;
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult CadastrarOperador(CadastrarOperadorRequest cadastrarOperadorRequest){
             try
             {

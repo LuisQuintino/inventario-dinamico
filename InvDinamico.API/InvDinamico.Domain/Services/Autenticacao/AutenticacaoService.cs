@@ -20,7 +20,12 @@ namespace InvDinamico.Domain.Services.Autenticacao
                 return new AuthenticationResponse
                 {
                     Sucesso = true,
-                    BearerToken = JwtExtensions.GerarToken(operador)
+                    BearerToken = JwtExtensions.GerarToken(operador),
+                    Operador = new {
+                        operador.Email,
+                        operador.Codigo,
+                        operador.TipoOperador
+                    }
                 };
 
             throw new InvDinamicoException("Email ou Senha inválidos.");

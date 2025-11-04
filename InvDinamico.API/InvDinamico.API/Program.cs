@@ -76,15 +76,26 @@ services.AddSwaggerGen(c =>
                 });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CORS",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:3000")
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseCors("CORS");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

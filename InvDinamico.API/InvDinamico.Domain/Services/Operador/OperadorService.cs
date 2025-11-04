@@ -16,7 +16,7 @@ namespace InvDinamico.Domain.Services.Operador
                     ?? throw new InvDinamicoException("Operador da solicitação não encontrado.");
 
             var operadorAtualizado =
-                _operadorRepository.Obter(atualizarOperadorRequest.CodigoOperador)
+                _operadorRepository.Obter(atualizarOperadorRequest.Codigo)
                     ?? throw new InvDinamicoException("Operador não encontrado.");
 
             if (operadorAtualizado.TipoOperador != atualizarOperadorRequest.TipoOperador)
@@ -31,6 +31,9 @@ namespace InvDinamico.Domain.Services.Operador
 
             if (!string.IsNullOrWhiteSpace(atualizarOperadorRequest.Senha))
                 operadorAtualizado.Senha = StringCipher.GenerateHash(atualizarOperadorRequest.Senha);
+
+            if (!string.IsNullOrWhiteSpace(atualizarOperadorRequest.Email))
+                operadorAtualizado.Email = atualizarOperadorRequest.Email;
 
             operadorAtualizado.Situacao = atualizarOperadorRequest.Situacao ?? operadorAtualizado.Situacao;
             

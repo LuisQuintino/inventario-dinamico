@@ -4,6 +4,7 @@ using InvDinamico.Domain.Entidades.Enums;
 using InvDinamico.Domain.Messaging.Operador;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace InvDinamico.Domain.Entidades
 {
@@ -13,6 +14,7 @@ namespace InvDinamico.Domain.Entidades
         [Key]
         public override Guid? Codigo { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string Senha { get; set; }
         public DateTime DtInclusao { get; set; }
         public DateTime DtSituacao { get; set; }

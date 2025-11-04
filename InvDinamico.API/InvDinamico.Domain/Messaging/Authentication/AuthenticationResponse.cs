@@ -5,5 +5,6 @@ namespace InvDinamico.Domain.Messaging.Authentication
     public class AuthenticationResponse : ResponseBase
     {
         public string BearerToken { get; set; }
+        public object Operador { get; set; }
     }
 }
