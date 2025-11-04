@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'https://localhost:44332/',
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'https://inventario-dinamico-api.fly.dev/',
     }
   },
 
