@@ -15,7 +15,7 @@ interface IEstoque {
   perecivel: boolean
   dtValidadeMedia: string
 }
-type EstoqueForm = Partial<IEstoque> & { nome?: string }
+type EstoqueForm = Partial<IEstoque> & { nome?: string, motivoMoviacito?: string }
 
 const props = defineProps<{
   modelValue: boolean
@@ -86,7 +86,9 @@ function handleSubmit() {
             </div>
             
             <div>
-              <label for="qtd" class="block text-sm font-medium text-gray-300">Quantidade</label>
+              <label for="qtd" class="block text-sm font-medium text-gray-300">
+                {{ mode === 'create' ? 'Quantidade' : 'Nova Quantidade' }}
+              </label>
               <input 
                 v-model.number="formData.qtdEmEstoque" 
                 type="number"
@@ -95,6 +97,17 @@ function handleSubmit() {
                 class="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
+          </div>
+
+          <div v-if="mode === 'edit'">
+            <label for="motivo" class="block text-sm font-medium text-gray-300">Motivo da Movimentação</label>
+            <input 
+              v-model="formData.motivoMoviacito" 
+              type="text"
+              id="motivo" 
+              required 
+              class="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            />
           </div>
           
           <div>
@@ -132,4 +145,4 @@ function handleSubmit() {
       </form>
     </div>
   </div>
-</template>
+</template> 
