@@ -1,9 +1,10 @@
 ﻿using api_domain.Config;
 using InvDinamico.Domain.Repositories.Base;
+using Microsoft.AspNetCore.Http;
 
 namespace InvDinamico.Domain.Repositories.Operador
 {
-    public class OperadorRepository(BdContext context) : RepositoryBase<Entidades.Operador>(context), IOperadorRepository
+    public class OperadorRepository(BdContext context, IHttpContextAccessor contextAccessor) : RepositoryBase<Entidades.Operador>(context, contextAccessor), IOperadorRepository
     {
         public Entidades.Operador Atualizar(Entidades.Operador operadorEntity) => Update(operadorEntity);
 

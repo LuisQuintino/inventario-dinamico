@@ -1,9 +1,11 @@
 using api_domain.Config;
 using api_domain.Extensions;
+using InvDinamico.Domain.Repositories.AuditTrail;
 using InvDinamico.Domain.Repositories.Categoria;
 using InvDinamico.Domain.Repositories.Estoque;
 using InvDinamico.Domain.Repositories.Movimento;
 using InvDinamico.Domain.Repositories.Operador;
+using InvDinamico.Domain.Services.AuditTrail;
 using InvDinamico.Domain.Services.Autenticacao;
 using InvDinamico.Domain.Services.Categoria;
 using InvDinamico.Domain.Services.Estoque;
@@ -17,20 +19,20 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-builder.Services.AddDbContext<BdContext>();
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddDbContext<BdContext>();
 
-builder.Services.AddScoped<IOperadorRepository, OperadorRepository>();
-builder.Services.AddScoped<IOperadorService, OperadorService>();
-builder.Services.AddScoped<IAutenticacaoService, AutenticacaoService>();
-builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-builder.Services.AddScoped<IMovimentoRepository, MovimentoRepository>();
-builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
-builder.Services.AddScoped<IEstoqueService, EstoqueService>();
-builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+services.AddScoped<IOperadorRepository, OperadorRepository>();
+services.AddScoped<IOperadorService, OperadorService>();
+services.AddScoped<IAutenticacaoService, AutenticacaoService>();
+services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+services.AddScoped<IMovimentoRepository, MovimentoRepository>();
+services.AddScoped<IEstoqueRepository, EstoqueRepository>();
+services.AddScoped<IEstoqueService, EstoqueService>();
+services.AddScoped<ICategoriaService, CategoriaService>();
+services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+services.AddScoped<IAuditTrailService, AuditTrailService>();
 
 var key = Encoding.ASCII.GetBytes(JwtExtensions.JwtSecretKey);
 services.AddAuthentication(x =>
@@ -76,7 +78,8 @@ services.AddSwaggerGen(c =>
                 });
 });
 
-builder.Services.AddCors(options =>
+services.AddHttpContextAccessor();
+services.AddCors(options =>
 {
     options.AddPolicy(name: "CORS",
                       builder =>
@@ -89,15 +92,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("CORS");
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

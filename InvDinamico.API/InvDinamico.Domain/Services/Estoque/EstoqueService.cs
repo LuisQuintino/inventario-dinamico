@@ -1,4 +1,5 @@
-﻿using InvDinamico.Domain.Messaging.Base;
+﻿using InvDinamico.Domain.Entidades;
+using InvDinamico.Domain.Messaging.Base;
 using InvDinamico.Domain.Messaging.Estoque;
 using InvDinamico.Domain.Repositories.Categoria;
 using InvDinamico.Domain.Repositories.Estoque;
@@ -33,6 +34,22 @@ namespace InvDinamico.Domain.Services.Estoque
 
             estoqueRepository.Inserir(estoque);
             movimentoRepository.Inserir(new(estoque, codigoOperador, estoque.QtdEmEstoque, "Inserção de item ao estoque", novoEstoque: true));
+        }
+
+        public void AtualizarEstoque(AtualizarEstoqueRequest request, Guid codigoOperador)
+        {
+            var categoria = categoriaRepository.Obter(request.CodigoCategoria)
+                ?? throw new InvDinamicoException("Categoria inválida");
+
+            if (categoria.Situacao != Entidades.Enums.SituacaoGenerica.Habilitado)
+                throw new InvDinamicoException("Categoria inativa, por favor escolha uma categoria ativa");
+
+            var estoqueDesatualizado = estoqueRepository.BuscarEstoque(request.Codigo);
+            Movimento movimento = new(estoqueDesatualizado, codigoOperador, request.NovaQtdEmEstoque - estoqueDesatualizado.QtdEmEstoque, request.MotivoMovimento, diferencaEstoque: estoqueDesatualizado.QtdEmEstoque - request.NovaQtdEmEstoque);
+
+            estoqueDesatualizado.AtualizarEstoque(request);
+            movimentoRepository.Inserir(movimento);
+            estoqueRepository.AtualizarEstoque(estoqueDesatualizado);
         }
 
         public List<Entidades.Estoque> ListarEstoques()
