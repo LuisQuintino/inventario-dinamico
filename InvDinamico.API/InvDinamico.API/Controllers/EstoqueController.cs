@@ -40,6 +40,31 @@ namespace InvDinamico.API.Controllers
             }
         }
 
+        [HttpPut]
+        public ActionResult AtualizarEstoque(AtualizarEstoqueRequest atualizarEstoqueRequest)
+        {
+            try
+            {
+                _estoqueService.AtualizarEstoque(atualizarEstoqueRequest, ObterCodigoOperador());
+                return Ok(new ResponseBase
+                {
+                    Sucesso = true
+                });
+            }
+            catch (InvDinamicoException invEx)
+            {
+                return BadRequest(new ResponseBase
+                {
+                    Sucesso = false,
+                    MsgErro = invEx.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
+
         [HttpGet]
         public ActionResult ListarEstoques()
         {

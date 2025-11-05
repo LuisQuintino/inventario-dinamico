@@ -1,4 +1,5 @@
 ﻿using InvDinamico.Domain.Entidades.Base;
+using InvDinamico.Domain.Messaging.Estoque;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,5 +18,18 @@ namespace InvDinamico.Domain.Entidades
         public bool Perecivel { get; set; }
         public DateTime DtValidadeMedia { get; set; }
         public override bool Auditavel { get; set; } = true;
+
+        public Estoque()
+        {
+        }
+
+        public void AtualizarEstoque(AtualizarEstoqueRequest request)
+        {
+            Nome = request.Nome ?? Nome;
+            CodigoCategoria = request.CodigoCategoria != CodigoCategoria ? request.CodigoCategoria : CodigoCategoria;
+            QtdEmEstoque = request.NovaQtdEmEstoque;
+            Perecivel = request.Perecivel ?? Perecivel;
+            DtValidadeMedia = request.DtValidadeMedia ?? DtValidadeMedia;
+        }
     }
 }

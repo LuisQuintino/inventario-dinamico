@@ -13,15 +13,22 @@ namespace InvDinamico.Domain.Entidades
         public string JsonNovo { get; set; }
         public string NomeEntidade { get; set; }
         public DateTime DtAlteracao { get; set; }
+        public string EmailOperador { get; set; }
         public Guid CodigoOperador { get; set; } 
         public override bool Auditavel { get; set; } = false;
 
-        public AuditTrail(string jsonAntigo, string jsonNovo, string nomeEntidade)
+        public AuditTrail()
+        {
+        }
+
+        public AuditTrail(string jsonAntigo, string jsonNovo, string nomeEntidade, Entidades.Operador operadorAcao)
         {
             JsonAntigo = jsonAntigo;
             JsonNovo = jsonNovo;
             NomeEntidade = nomeEntidade;
             DtAlteracao = DateTime.Now;
+            EmailOperador = operadorAcao.Email ?? string.Empty;
+            CodigoOperador = operadorAcao.Codigo ?? Guid.Empty;
         }
     }
 }

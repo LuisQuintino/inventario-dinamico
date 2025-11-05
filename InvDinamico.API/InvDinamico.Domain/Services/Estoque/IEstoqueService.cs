@@ -6,5 +6,6 @@ namespace InvDinamico.Domain.Services.Estoque
     {
         void InserirNovoEstoque(InserirEstoqueRequest request, Guid codigoOperador);
         List<Entidades.Estoque> ListarEstoques();
+        void AtualizarEstoque(AtualizarEstoqueRequest request, Guid codigoOperador);
     }
 }

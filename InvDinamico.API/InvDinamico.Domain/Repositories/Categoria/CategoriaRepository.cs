@@ -1,9 +1,10 @@
 ﻿using api_domain.Config;
 using InvDinamico.Domain.Repositories.Base;
+using Microsoft.AspNetCore.Http;
 
 namespace InvDinamico.Domain.Repositories.Categoria
 {
-    public class CategoriaRepository(BdContext context) : RepositoryBase<Entidades.Categoria>(context), ICategoriaRepository
+    public class CategoriaRepository(BdContext context, IHttpContextAccessor contextAccessor) : RepositoryBase<Entidades.Categoria>(context, contextAccessor), ICategoriaRepository
     {
         public void Atualizar(Entidades.Categoria entidade) => Update(entidade);
 

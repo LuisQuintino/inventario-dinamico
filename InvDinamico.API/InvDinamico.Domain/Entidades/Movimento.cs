@@ -21,14 +21,14 @@ namespace InvDinamico.Domain.Entidades
 
         public Movimento() {}
 
-        public Movimento(Estoque estoque, Guid codigoOperador, int qtdMovimentada, string motivoMovimento, bool novoEstoque = false)
+        public Movimento(Estoque estoque, Guid codigoOperador, int qtdMovimentada, string motivoMovimento, bool novoEstoque = false, int? diferencaEstoque = null)
         {
             CodigoEstoque = estoque.Codigo ?? throw new InvDinamicoException("Necessário informar estoque");
             CodigoOperador = codigoOperador;
             Motivo = motivoMovimento;
             Diferenca = qtdMovimentada;
-            QtdEstoqueAntes = estoque.QtdEmEstoque;
-            QtdEstoqueDepois = novoEstoque ? estoque.QtdEmEstoque : estoque.QtdEmEstoque + qtdMovimentada;
+            QtdEstoqueAntes = novoEstoque ? 0 : estoque.QtdEmEstoque;
+            QtdEstoqueDepois = novoEstoque ? estoque.QtdEmEstoque : estoque.QtdEmEstoque + (int)diferencaEstoque;
         }
     }
 }
