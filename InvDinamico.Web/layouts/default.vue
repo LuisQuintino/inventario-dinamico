@@ -46,6 +46,15 @@ function handleLogout() {
               <span class="ml-2">Categorias</span>
             </NuxtLink>
           </li>
+          <li class="mt-2">
+            <NuxtLink 
+              to="/audittrail" 
+              class="flex items-center py-2 px-3 rounded text-gray-300 hover:bg-gray-700 hover:text-white"
+              active-class="bg-gray-700 text-white"
+            >
+              <span class="ml-2">Audit Trail</span>
+            </NuxtLink>
+          </li>
         </ul>
       </nav>
     </aside>

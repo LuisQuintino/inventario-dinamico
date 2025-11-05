@@ -17,7 +17,11 @@ interface IEstoque {
   perecivel: boolean
   dtValidadeMedia: string | null
 }
-type EstoqueForm = Partial<IEstoque> & { nome?: string }
+type EstoqueForm = Partial<IEstoque> & { 
+  nome?: string, 
+  novaQtdEmEstoque?: number, 
+  motivoMoviacito?: string 
+}
 
 const authStore = useAuthStore()
 if (!authStore.isAuthenticated) {
@@ -61,7 +65,8 @@ function openCreateModal() {
 function openEditModal(estoque: IEstoque) {
   currentEstoque.value = {
     ...estoque,
-    dtValidadeMedia: estoque.dtValidadeMedia ? estoque.dtValidadeMedia.split('T')[0] : null
+    dtValidadeMedia: estoque.dtValidadeMedia ? estoque.dtValidadeMedia.split('T')[0] : null,
+    motivoMoviacito: ''
   }
   modalMode.value = 'edit'
   isModalOpen.value = true
@@ -70,16 +75,26 @@ function openEditModal(estoque: IEstoque) {
 async function handleSave(formData: EstoqueForm) {
   isLoading.value = true
   apiError.value = null
-  
-  const payload = { ...formData }
+  console.log(formData)
   
   try {
     if (modalMode.value === 'create') {
+      const payload = { ...formData }
       await apiFetch('/Estoque', {
         method: 'POST',
         body: payload
       })
     } else {
+      const payload = {
+        codigo: formData.codigo,
+        codigoCategoria: formData.codigoCategoria,
+        novaQtdEmEstoque: formData.qtdEmEstoque,
+        nome: formData.nome,
+        perecivel: formData.perecivel,
+        MotivoMovimentacao: formData.motivoMoviacito,
+        dtValidadeMedia: formData.dtValidadeMedia
+      }
+      
       await apiFetch(`/Estoque`, {
         method: 'PUT',
         body: payload
@@ -137,7 +152,7 @@ function formatPerecivel(isPerecivel: boolean) {
               <tr>
                 <th scope="col" class="py-3 px-6">Nome</th>
                 <th scope="col" class="py-3 px-6">Categoria</th>
-                <th scope="col" class="py-3 px-6">Quantidade</th>
+                <th scope="col" classcol="py-3 px-6">Quantidade</th>
                 <th scope="col" class="py-3 px-6">Perecível</th>
                 <th scope="col" class="py-3 px-6">Validade Média</th>
                 <th scope="col" class="py-3 px-6">Ações</th>
@@ -154,7 +169,7 @@ function formatPerecivel(isPerecivel: boolean) {
                   </span>
                 </td>
                 <td class="py-4 px-6">{{ formatDate(item.dtValidadeMedia) }}</td>
-                <td class="py-4 px-6">
+                <td class-="py-4 px-6">
                   <button @click="openEditModal(item)" class="font-medium text-blue-400 hover:underline">
                     Editar
                   </button>
