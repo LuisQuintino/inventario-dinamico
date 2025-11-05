@@ -1,4 +1,5 @@
 ﻿using InvDinamico.Domain.Entidades.Base;
+using Org.BouncyCastle.Asn1.Mozilla;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,6 +13,7 @@ namespace InvDinamico.Domain.Entidades
         public string JsonAntigo { get; set; }
         public string JsonNovo { get; set; }
         public string NomeEntidade { get; set; }
+        public string Acao { get; set; }
         public DateTime DtAlteracao { get; set; }
         public string EmailOperador { get; set; }
         public Guid CodigoOperador { get; set; } 
@@ -21,7 +23,7 @@ namespace InvDinamico.Domain.Entidades
         {
         }
 
-        public AuditTrail(string jsonAntigo, string jsonNovo, string nomeEntidade, Entidades.Operador operadorAcao)
+        public AuditTrail(string jsonAntigo, string jsonNovo, string nomeEntidade, Entidades.Operador operadorAcao, string acao)
         {
             JsonAntigo = jsonAntigo;
             JsonNovo = jsonNovo;
@@ -29,6 +31,7 @@ namespace InvDinamico.Domain.Entidades
             DtAlteracao = DateTime.Now;
             EmailOperador = operadorAcao.Email ?? string.Empty;
             CodigoOperador = operadorAcao.Codigo ?? Guid.Empty;
+            Acao = acao;
         }
     }
 }

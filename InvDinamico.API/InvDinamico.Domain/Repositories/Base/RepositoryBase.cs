@@ -27,7 +27,7 @@ namespace InvDinamico.Domain.Repositories.Base
                 entity.Codigo = Guid.NewGuid();
 
             if (entity.Auditavel)
-                InserirAudit(entity);
+                InserirAudit(entity, "INSERT");
 
             var entityInserted = Context.Add(entity);
             context.SaveChanges();
@@ -38,7 +38,7 @@ namespace InvDinamico.Domain.Repositories.Base
         public T Update(T entity)
         {
             if (entity.Auditavel)
-                InserirAudit(entity);
+                InserirAudit(entity, "UPDATE");
 
             var entityInserted = Context.Update(entity);
             context.SaveChanges();
@@ -52,7 +52,7 @@ namespace InvDinamico.Domain.Repositories.Base
             context.SaveChanges();
         }
 
-        private void InserirAudit(T entityAtualizada)
+        private void InserirAudit(T entityAtualizada, string acao)
         {
             var entityDesatualizada =
                 Context.AsNoTracking().SingleOrDefault(e => e.Codigo == entityAtualizada.Codigo);
@@ -65,7 +65,7 @@ namespace InvDinamico.Domain.Repositories.Base
                 entityDesatualizadaSerializada = JsonSerializer.Serialize(entityDesatualizada);
 
             var nomeEntity = typeof(T).Name;
-            var auditTrailEntity = new Entidades.AuditTrail(entityDesatualizadaSerializada, entityAtualizadaSerializada, nomeEntity, operadorAcao);
+            var auditTrailEntity = new Entidades.AuditTrail(entityDesatualizadaSerializada, entityAtualizadaSerializada, nomeEntity, operadorAcao, acao);
 
             AuditTrailContext.Add(auditTrailEntity);
         }
