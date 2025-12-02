@@ -8,7 +8,7 @@ Justificativa: O principal objetivo do software é fornecer às instituições p
 e eficiente para o gerenciamento de estoque. Ao promover um controle mais organizado e 
 transparente dos materiais, busca-se otimizar a previsão de demandas e agilizar o processo 
 de reposição de itens, contribuindo diretamente para a redução de custos e o aumento da 
-eficiência operacional.
+eficiência operacional no qual o principal beneficiado foi a **Escola municipal anaburgo**.
 
 Descrição do APP: Pretende-se desenvolver um sistema de gestão de estoque capaz de atender às necessidades 
 específicas das instituições públicas, garantindo o acompanhamento em tempo real dos 
@@ -130,6 +130,129 @@ Ao final, é possível exportar os dados em Excel ou PDF, facilitando o controle
 <img width="605" height="431" alt="image" src="https://github.com/user-attachments/assets/e43d8666-e866-423d-878a-f65f8690a8c8" />
 
 **A Tela de Gerenciamento de Categorias de Materiais** permite editar, excluir e adicionar novas categorias de itens do estoque, como materiais de escritório, higiene, alimentos e limpeza. Também é possível salvar as alterações, garantindo que o sistema permaneça organizado, atualizado e adaptado às necessidades da escola.
+
+
+
+**Requisitos para preparar o ambiente de desenvolvimento**
+
+**1. Requisitos de Hardware**
+Computador com: Processador dual-core ou superior
+
+Mínimo 8 GB de RAM (ideal 16 GB)
+
+Pelo menos 20 GB livres em disco
+
+Acesso à internet para instalação de dependências e uso de GitHub.
+
+**2. Sistema Operacional**
+
+Windows 10/11, Linux (Ubuntu, Mint, etc.) ou macOS
+
+Permissão de instalação de softwares (Node, banco de dados, etc.).
+
+**3. Ferramentas de Desenvolvimento**
+Editor / IDE
+Visual Studio Code (recomendado)
+
+Extensões úteis:
+
+ESLint / Prettier
+
+Suporte a Vue/React (caso use)
+
+GitLens
+
+**3.1. Controle de Versão**
+
+Git instalado
+
+Conta no GitHub/GitLab/Bitbucket para hospedar o código.
+
+**4. Backend (API)**
+
+Node.js LTS instalado
+
+npm ou yarn para gerenciamento de pacotes
+
+Framework backend (por exemplo):
+
+Express.js (rotas, middlewares)
+
+Dependências típicas:
+
+dotenv (variáveis de ambiente)
+
+cors
+
+jsonwebtoken (se tiver autenticação)
+
+bcrypt (hash de senha)
+
+ORM (por ex. Sequelize, Prisma ou similar)
+
+**5. Banco de Dados**
+
+Um SGBD instalado localmente ou em servidor:
+
+MySQL / MariaDB ou
+
+PostgreSQL ou
+
+SQL Server (se já estiver usando)
+
+Ferramenta gráfica para gerenciar o BD (opcional, mas ajuda):
+
+DBeaver / MySQL Workbench / SQL Server Management Studio etc.
+
+Criar:
+
+Banco de dados da aplicação
+
+Usuário e senha específicos para o sistema
+
+Script inicial de criação de tabelas (Itens, Movimentações, Usuários, Perfis etc.).
+
+**6. Frontend (Interface Web)**
+
+Framework SPA (ajuste para o que você estiver usando):
+
+Vue.js, React ou Angular
+
+Ferramentas:
+
+npm create vite@latest (se usar Vite) ou CLI do framework
+
+Bibliotecas úteis:
+
+Biblioteca de componentes (ex.: Bootstrap, Tailwind, Vuetify, etc.)
+
+Biblioteca de gráficos (ex.: Chart.js) para o painel
+
+Biblioteca para chamadas HTTP (axios, fetch)
+
+**7. Outras Configurações Importantes**
+
+Arquivo .env com:
+
+URL do banco de dados
+
+Porta da API (ex.: PORT=3000)
+
+Segredo JWT (se houver login)
+
+Scripts no package.json:
+
+"dev" para rodar o backend
+
+"dev" para rodar o frontend
+
+Definir padrão de branch e commits (Git flow básico).
+
+Opcional: Docker para padronizar o ambiente (API + BD + frontend).
+
+
+
+
 
 ## Outros Benefícios da Arquitetura Escolhida
 
