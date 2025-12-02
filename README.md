@@ -1,6 +1,23 @@
 # 📐 Arquitetura em Camadas com DDD (Domain-Driven Design)
 
-# Alunos:
+Título do projeto: Inventário Dinamico.
+
+# Alunos: Bruno Luis Pereira, Guilherme Theis, Luis Quintino, Paulo Henrique S., Ramires Silva Paes e Rafael dos Santos Pereira.
+
+Professores orientadores: Luiz Carlos Camargo e Claudinei Dias
+
+Justificativa: O principal objetivo do software é fornecer às instituições públicas uma ferramenta prática 
+e eficiente para o gerenciamento de estoque. Ao promover um controle mais organizado e 
+transparente dos materiais, busca-se otimizar a previsão de demandas e agilizar o processo 
+de reposição de itens, contribuindo diretamente para a redução de custos e o aumento da 
+eficiência operacional.
+
+Descrição do APP: Pretende-se desenvolver um sistema de gestão de estoque capaz de atender às necessidades 
+específicas das instituições públicas, garantindo o acompanhamento em tempo real dos 
+recursos (materiais de escritório, produtos de higiene, produtos alimentícios etc.). Dessa 
+forma, espera-se impulsionar a transparência na utilização dos recursos, promover uma 
+melhor organização dos processos e assegurar um uso responsável dos insumos, refletindo 
+em melhorias nos serviços oferecidos à comunidade. 
 
 
 ## A estrutura será baseada nos seguintes níveis principais:
