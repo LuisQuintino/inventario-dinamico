@@ -1,6 +1,4 @@
-# 📐 Arquitetura em Camadas com DDD (Domain-Driven Design)
-
-Título do projeto: Inventário Dinamico.
+# Título do projeto: Inventário Dinamico.
 
 # Alunos: Bruno Luis Pereira, Guilherme Theis, Luis Quintino, Paulo Henrique S., Ramires Silva Paes e Rafael dos Santos Pereira.
 
@@ -63,6 +61,75 @@ Esses são os requisitos não funcionais da nossa aplicação:
 •	RNF07: Adaptar-se a novas categorias de materiais sem necessidade de reestruturação do código.
 •	RNF08: Cumprir a Lei Geral de Proteção de Dados (LGPD) no tratamento de informações.
 
+## Prints da telas com resumo.
+<img width="751" height="802" alt="image" src="https://github.com/user-attachments/assets/bfda4c1f-e26b-42e6-932b-9694c2448436" />
+
+
+**1. Tela de Login**
+
+A tela de login é a primeira interface apresentada ao usuário ao acessar o sistema. Sua função é garantir a segurança e o controle de acesso ao sistema.
+
+**Elementos da Tela:**
+
+Título: Sistema de Gestão de Estoque Público
+
+Campo “Nome de usuário”: utilizado para identificação do usuário.
+
+Campo “Senha”: utilizado para autenticação segura.
+
+Botão “Entrar”: realiza o acesso ao sistema após validação dos dados.
+
+Link “Esqueceu sua senha?”: permite a recuperação da senha.
+
+**Menu Lateral de Navegação**
+
+Localizado à esquerda da tela, permite acesso rápido às funcionalidades principais do sistema:
+
+Estoque Geral – Visualização completa de todos os itens.
+
+Cadastro de Itens – Inserção de novos materiais no estoque.
+
+Registrar Entrada/Saída – Controle de movimentação dos itens.
+
+Usuários – Gerenciamento de usuários do sistema.
+
+Relatórios – Emissão de relatórios de controle do estoque.
+
+
+<img width="601" height="602" alt="image" src="https://github.com/user-attachments/assets/324c526d-e7dd-4b3a-950f-2caad8e55d34" />
+
+**A Tela de Registro de Movimentação** é utilizada para controlar as entradas e saídas de itens do estoque. 
+Nela, o usuário informa o tipo de movimentação, a data, o item (busca por nome ou código), a quantidade, o setor beneficiado e a justificativa. Ao final, é possível registrar, cancelar ou limpar os campos, garantindo um controle organizado, seguro e rastreável dos materiais da escola.
+
+
+<img width="615" height="598" alt="image" src="https://github.com/user-attachments/assets/8cf1dfa2-bb7b-4874-81c5-8180775ee21a" />
+
+**A Tela de Cadastro de Itens** é utilizada para inserir novos materiais no estoque da escola. 
+Nela, o usuário informa o nome do item, a categoria, a quantidade, o setor beneficiado e a justificativa. Ao final, pode salvar, cancelar ou limpar os campos, garantindo um cadastro organizado e padronizado dos itens do inventário.
+
+
+<img width="616" height="619" alt="image" src="https://github.com/user-attachments/assets/dfbdd472-37a5-42d2-9cac-af4e4144c212" />
+
+**A Tela de Administração de Usuários** é responsável pelo gerenciamento dos usuários do sistema. 
+ela é possível visualizar informações como nome, cargo, setor, contato e perfil de acesso. Também há a opção de adicionar novo usuário, permitindo controlar quem pode acessar e operar o sistema de inventário de forma segura e organizada.
+
+
+<img width="608" height="600" alt="image" src="https://github.com/user-attachments/assets/10f83b90-8c1a-4cd6-82a8-e263b7a79166" />
+
+**A Tela de Relatórios de Movimentação** permite gerar relatórios personalizados sobre as entradas e saídas de itens do estoque. O usuário pode filtrar por data inicial, categoria do item, tipo de movimentação e setor responsável.
+Ao final, é possível exportar os dados em Excel ou PDF, facilitando o controle, a análise e a prestação de contas da escola.
+
+<img width="595" height="508" alt="image" src="https://github.com/user-attachments/assets/c60158e2-236d-43f2-9311-9f747f974aad" />
+
+**A Tela de Configurações permite** ajustar as principais preferências do sistema, como perfis de acesso dos usuários, segurança e criptografia de dados, adição ou modificação de categorias de materiais e a personalização da interface (idioma e tema). Essa tela garante maior controle, segurança e adaptação do sistema às necessidades da escola.
+
+<img width="601" height="427" alt="image" src="https://github.com/user-attachments/assets/b5cad380-f2f7-42b5-9707-5c617ff61eea" />
+
+**A Tela de Perfis de Acesso permite o gerenciamento** dos níveis de permissão dos usuários do sistema. Nela é possível visualizar os perfis de Administrador, Operador e Visualizador, com suas respectivas permissões. Também é possível editar perfis existentes, adicionar novos perfis e salvar as alterações, garantindo mais segurança e controle no acesso às funcionalidades do sistema.
+
+<img width="605" height="431" alt="image" src="https://github.com/user-attachments/assets/e43d8666-e866-423d-878a-f65f8690a8c8" />
+
+**A Tela de Gerenciamento de Categorias de Materiais** permite editar, excluir e adicionar novas categorias de itens do estoque, como materiais de escritório, higiene, alimentos e limpeza. Também é possível salvar as alterações, garantindo que o sistema permaneça organizado, atualizado e adaptado às necessidades da escola.
 
 ## Outros Benefícios da Arquitetura Escolhida
 
